@@ -1,0 +1,8 @@
+{
+   "private": true,
+   "name": "adventure-book",
+   "workspaces": ["frontend"],
+   "scripts": {
+      "frontend": "yarn workspace frontend start"
+   }
+}
