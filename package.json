@@ -1,9 +1,16 @@
 {
-   "private": true,
-   "name": "adventure-book",
-   "workspaces": ["frontend", "backend"],
-   "scripts": {
-      "frontend": "yarn workspace frontend start",
-      "backend": "yarn workspace backend start"
-   }
+  "private": true,
+  "name": "adventure-book",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "frontend": "yarn workspace frontend start",
+    "backend": "yarn workspace backend start",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "prettier": "^2.6.2"
+  }
 }
