@@ -1,11 +1,30 @@
+require('dotenv').config()
 const express = require('express')
-const app = express()
-const port = 3000
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+const authRoutes = require('./authRoutes')
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+const PORT = process.env.PORT
+
+const createApp = () => {
+  const app = express()
+
+  app.set('trust proxy', 1)
+  app.use(express.json())
+
+  app.use(authRoutes())
+
+  return app
+}
+
+const main = async () => {
+  const app = createApp()
+
+  app.listen(PORT, () => {
+    console.log(`Example app listening on port ${PORT}`)
+  })
+}
+
+main().catch((error) => {
+  console.error(error)
+  process.exit(1)
 })
