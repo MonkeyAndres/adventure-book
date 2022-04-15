@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
-
 const authRoutes = require('./authRoutes')
+const adventureRoutes = require('./adventureRoutes')
 
 const PORT = process.env.PORT
 
@@ -12,6 +12,7 @@ const createApp = () => {
   app.use(express.json())
 
   app.use(authRoutes())
+  app.use(adventureRoutes())
 
   return app
 }

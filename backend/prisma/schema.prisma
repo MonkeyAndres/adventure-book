@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "darwin"]
 }
 
 datasource db {
@@ -28,29 +29,34 @@ model Adventure {
   title     String   @db.VarChar(255)
   content   String   @db.Text
 
-  author   User @relation(fields: [authorId], references: [id])
+  author   User @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId Int
 
   TagInAdventure TagInAdventure[]
+
+  @@unique([id, authorId])
 }
 
 model Tag {
   id       Int     @id @default(autoincrement())
-  label    String  @unique @db.VarChar(255)
+  label    String  @db.VarChar(255)
   isPerson Boolean
 
-  creator   User @relation(fields: [creatorId], references: [id])
+  creator   User @relation(fields: [creatorId], references: [id], onDelete: Cascade)
   creatorId Int
 
   TagInAdventure TagInAdventure[]
+  @@unique([label, creatorId])
 }
 
 model TagInAdventure {
   id Int @id @default(autoincrement())
 
-  tag   Tag @relation(fields: [tagId], references: [id])
+  tag   Tag @relation(fields: [tagId], references: [id], onDelete: Cascade)
   tagId Int
 
-  adventure   Adventure @relation(fields: [adventureId], references: [id])
+  adventure   Adventure @relation(fields: [adventureId], references: [id], onDelete: Cascade)
   adventureId Int
+
+  @@unique([tagId, adventureId])
 }
