@@ -30,3 +30,15 @@ export const useLoginMutation = () => {
     await refetchProfile()
   })
 }
+
+export const useRegisterMutation = () => {
+  const { refetchProfile } = useUserProfile()
+
+  return useMutation(async (values) => {
+    await enhancedFetch('POST', '/api/auth/register', {
+      data: values,
+    })
+
+    await refetchProfile()
+  })
+}
