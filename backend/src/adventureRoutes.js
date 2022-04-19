@@ -251,7 +251,7 @@ const adventureRoutes = () => {
     const userId = req.user.id
 
     const adventures = await prisma.adventure.findMany({
-      select: adventureDataSelect,
+      select: { ...adventureDataSelect, content: false },
 
       where: {
         authorId: userId,
@@ -317,10 +317,34 @@ const adventureRoutes = () => {
         updatedAt: 'desc',
       },
 
-      select: adventureDataSelect,
+      select: { ...adventureDataSelect, content: false },
     })
 
     return res.json(searchResults.map(formatAdventureTags))
+  })
+
+  // GET /adventure/:id
+
+  router.get('/adventure/:id', async (req, res) => {
+    const userId = req.user.id
+    const adventureId = req.params.id
+
+    const adventure = await prisma.adventure.findUnique({
+      select: adventureDataSelect,
+
+      where: {
+        id_authorId: {
+          id: adventureId,
+          authorId: userId,
+        },
+      },
+    })
+
+    if (!adventure) {
+      return res.status(400).json({ message: `No adventure with id "${id}"` })
+    }
+
+    return res.json(formatAdventureTags(adventure))
   })
 
   return router
