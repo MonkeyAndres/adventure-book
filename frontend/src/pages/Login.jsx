@@ -1,3 +1,4 @@
+import styles from './Login.module.css'
 import useControlledForm from '../common/useControlledForm'
 import { isRequired, isValidEmail } from '../common/validation'
 import { useLoginMutation } from '../services/user'
@@ -24,10 +25,10 @@ const Login = ({ goToRegister }) => {
     })
 
   return (
-    <main>
-      <h1>AdventureBook</h1>
+    <main className={styles.container}>
+      <h1 className={styles.header}>AdventureBook</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email</label>
           <input
@@ -38,13 +39,15 @@ const Login = ({ goToRegister }) => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {touched.email && errors.email ? <span>{errors.email}</span> : null}
+          {touched.email && errors.email ? (
+            <span className={styles.errorMessage}>{errors.email}</span>
+          ) : null}
         </div>
 
         <div>
           <label htmlFor="password">Contraseña</label>
           <input
-            type="text"
+            type="password"
             name="password"
             id="password"
             value={values.password}
@@ -52,18 +55,28 @@ const Login = ({ goToRegister }) => {
             onBlur={handleBlur}
           />
           {touched.password && errors.password ? (
-            <span>{errors.password}</span>
+            <span className={styles.errorMessage}>{errors.password}</span>
           ) : null}
         </div>
 
-        <button type="submit" disabled={isPending}>
-          Iniciar sesión
+        <button
+          className={styles.submitButton}
+          type="submit"
+          disabled={isPending}
+        >
+          {isPending ? 'Loading...' : 'Iniciar sesión'}
         </button>
       </form>
 
-      {hasErrored ? <span>Email o contraseña incorrectos</span> : null}
+      {hasErrored ? (
+        <span className={styles.errorMessage}>
+          Email o contraseña incorrectos
+        </span>
+      ) : null}
 
-      <button onClick={goToRegister}>Registrarte</button>
+      <p className={styles.helperText} role="button" onClick={goToRegister}>
+        ¿No tienes cuenta? Crea una.
+      </p>
     </main>
   )
 }

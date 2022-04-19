@@ -1,0 +1,22 @@
+:root {
+  --ash-gray: #cad2c5ff;
+  --dark-sea-green: #84a98cff;
+  --hookers-green: #52796fff;
+  --dark-slate-gray: #354f52ff;
+  --charcoal: #2f3e46ff;
+}
+
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+  font-family: 'Mulish', sans-serif;
+}
+
+html,
+body {
+  background-color: var(--charcoal);
+  color: #fefefe;
+}

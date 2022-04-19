@@ -1,3 +1,4 @@
+import styles from './Login.module.css'
 import useControlledForm from '../common/useControlledForm'
 import { isRequired, isValidEmail } from '../common/validation'
 import { useRegisterMutation } from '../services/user'
@@ -26,10 +27,10 @@ const Register = ({ goToLogin }) => {
     })
 
   return (
-    <main>
-      <h1>AdventureBook</h1>
+    <main className={styles.container}>
+      <h1 className={styles.header}>AdventureBook</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Nombre completo</label>
           <input
@@ -40,20 +41,24 @@ const Register = ({ goToLogin }) => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {touched.name && errors.name ? <span>{errors.name}</span> : null}
+          {touched.name && errors.name ? (
+            <span className={styles.errorMessage}>{errors.name}</span>
+          ) : null}
         </div>
 
         <div>
           <label htmlFor="email">Email</label>
           <input
-            type="email"
+            type="text"
             name="email"
             id="email"
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {touched.email && errors.email ? <span>{errors.email}</span> : null}
+          {touched.email && errors.email ? (
+            <span className={styles.errorMessage}>{errors.email}</span>
+          ) : null}
         </div>
 
         <div>
@@ -67,18 +72,28 @@ const Register = ({ goToLogin }) => {
             onBlur={handleBlur}
           />
           {touched.password && errors.password ? (
-            <span>{errors.password}</span>
+            <span className={styles.errorMessage}>{errors.password}</span>
           ) : null}
         </div>
 
-        <button type="submit" disabled={isPending}>
-          Crear cuenta
+        <button
+          className={styles.submitButton}
+          type="submit"
+          disabled={isPending}
+        >
+          {isPending ? 'Loading...' : 'Crear cuenta'}
         </button>
       </form>
 
-      {hasErrored ? <span>Error intentando registrar al usuario</span> : null}
+      {hasErrored ? (
+        <span className={styles.errorMessage}>
+          Error intentando registrar al usuario
+        </span>
+      ) : null}
 
-      <button onClick={goToLogin}>Iniciar sesión</button>
+      <p className={styles.helperText} role="button" onClick={goToLogin}>
+        ¿Ya tienes cuenta? Inicia sesión.
+      </p>
     </main>
   )
 }

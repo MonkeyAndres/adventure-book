@@ -4,6 +4,7 @@ import QueryCacheProvider from './components/QueryCacheProvider'
 import RouterProvider from './components/RouterProvider'
 import RootPage from './pages/Root'
 import reportWebVitals from './reportWebVitals'
+import './index.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
