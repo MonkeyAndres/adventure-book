@@ -1,0 +1,53 @@
+.adventureContainer {
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: flex-start;
+
+  margin-right: -1rem;
+}
+
+.adventureCard {
+  width: calc(33% - 1rem);
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+
+  background-color: var(--dark-slate-gray);
+
+  cursor: pointer;
+}
+
+.adventureCard > h3 {
+  font-size: 21px;
+}
+
+.adventureCard > span {
+  color: #d3d3d3;
+  font-size: 14px;
+}
+
+.tagContainer {
+  overflow-x: auto;
+
+  overflow-y: hidden;
+}
+
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+
+  padding-top: 0.6rem;
+}
+
+.tagContainer span {
+  background-color: var(--hookers-green);
+
+  margin-right: 0.3rem;
+  margin-bottom: 0.4rem;
+
+  padding: 0.3rem 0.5rem;
+  border-radius: 20px;
+}

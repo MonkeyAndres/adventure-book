@@ -1,0 +1,10 @@
+.searchContainer {
+  padding: 1.3rem 0;
+}
+
+.separator {
+  height: 2px;
+  margin-bottom: 1rem;
+
+  background-color: var(--dark-slate-gray);
+}

@@ -13,6 +13,9 @@
 
   box-sizing: border-box;
   font-family: 'Mulish', sans-serif;
+  line-height: 1.5;
+
+  outline-color: var(--dark-sea-green);
 }
 
 html,

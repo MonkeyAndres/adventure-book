@@ -1,0 +1,34 @@
+.header {
+  background-color: var(--dark-sea-green);
+  padding: 1.2rem 1rem;
+}
+
+.headerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerContainer h1 {
+  font-family: 'Roboto Slab', serif;
+}
+
+.headerContainer nav a {
+  margin-right: 1.2rem;
+  color: #fefefe;
+  text-decoration: none;
+
+  transition: color 200ms ease-in-out;
+}
+
+.headerContainer nav a:hover {
+  color: var(--charcoal);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}

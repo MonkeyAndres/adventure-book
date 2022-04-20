@@ -42,3 +42,13 @@ export const useRegisterMutation = () => {
     await refetchProfile()
   })
 }
+
+export const useLogoutMutation = () => {
+  const { refetchProfile } = useUserProfile()
+
+  return useMutation(async () => {
+    await enhancedFetch('POST', '/api/auth/logout')
+
+    await refetchProfile()
+  })
+}
