@@ -2,6 +2,7 @@ import styles from './Login.module.css'
 import useControlledForm from '../common/useControlledForm'
 import { isRequired, isValidEmail } from '../common/validation'
 import { useLoginMutation } from '../services/user'
+import Button from '../components/Button'
 
 const Login = ({ goToRegister }) => {
   const { isPending, hasErrored, execute } = useLoginMutation()
@@ -59,13 +60,12 @@ const Login = ({ goToRegister }) => {
           ) : null}
         </div>
 
-        <button
+        <Button
           className={styles.submitButton}
+          text="Iniciar sesión"
           type="submit"
-          disabled={isPending}
-        >
-          {isPending ? 'Loading...' : 'Iniciar sesión'}
-        </button>
+          isLoading={isPending}
+        />
       </form>
 
       {hasErrored ? (

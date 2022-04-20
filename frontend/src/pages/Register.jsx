@@ -2,6 +2,7 @@ import styles from './Login.module.css'
 import useControlledForm from '../common/useControlledForm'
 import { isRequired, isValidEmail } from '../common/validation'
 import { useRegisterMutation } from '../services/user'
+import Button from '../components/Button'
 
 const Register = ({ goToLogin }) => {
   const { isPending, hasErrored, execute } = useRegisterMutation()
@@ -76,13 +77,12 @@ const Register = ({ goToLogin }) => {
           ) : null}
         </div>
 
-        <button
+        <Button
           className={styles.submitButton}
+          text="Crear cuenta"
           type="submit"
-          disabled={isPending}
-        >
-          {isPending ? 'Loading...' : 'Crear cuenta'}
-        </button>
+          isLoading={isPending}
+        />
       </form>
 
       {hasErrored ? (
