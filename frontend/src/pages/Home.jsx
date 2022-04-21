@@ -7,7 +7,6 @@ import {
   useAdventuresSearch,
   useRecentAdventures,
 } from '../services/adventures'
-import { useLogoutMutation } from '../services/user'
 import { RouterContext } from '../components/RouterProvider'
 import { isNil } from '../common/validation'
 
@@ -27,7 +26,6 @@ const debounce = (fn, ms) => {
 
 const Home = () => {
   const history = useContext(RouterContext)
-  const { execute } = useLogoutMutation()
 
   const { isLoading, data } = useRecentAdventures({ autoRun: true })
 
@@ -52,8 +50,10 @@ const Home = () => {
     [debouncedSearch],
   )
 
+  const goToFormCreation = () => history.push('/adventure/create')
+
   return (
-    <Layout performLogout={execute}>
+    <>
       <Layout.Container>
         <div className={styles.searchContainer}>
           <input
@@ -63,7 +63,7 @@ const Home = () => {
             onChange={handleSearchQueryChange}
           />
 
-          <Button text="Crear aventura" />
+          <Button text="Crear aventura" onClick={goToFormCreation} />
         </div>
       </Layout.Container>
 
@@ -83,7 +83,7 @@ const Home = () => {
           />
         )}
       </Layout.Container>
-    </Layout>
+    </>
   )
 }
 

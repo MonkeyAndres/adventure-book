@@ -1,10 +1,13 @@
 import React, { useMemo, useState } from 'react'
 import { pathToRegexp } from 'path-to-regexp'
-import { useUserProfile } from '../services/user'
+import { useLogoutMutation, useUserProfile } from '../services/user'
 
 import Login from './Login'
 import Register from './Register'
 import Home from './Home'
+import Layout from '../components/Layout'
+import AdventureForm from './AdventureForm'
+import RouterProvider from '../components/RouterProvider'
 
 const PublicRoutes = () => {
   const [isRegister, setIsRegister] = useState(false)
@@ -41,15 +44,21 @@ const Switch = ({ children }) => {
 const Route = ({ element }) => element
 
 const PrivateRoutes = () => {
+  const { execute } = useLogoutMutation()
+
   return (
-    <Switch>
-      <Route path="/" exact element={<Home />} />
+    <RouterProvider>
+      <Layout performLogout={execute}>
+        <Switch>
+          <Route path="/" exact element={<Home />} />
 
-      <Route path="/adventure/create" element={'Create'} />
-      <Route path="/adventure/:id" element={'Detail'} />
+          <Route path="/adventure/create" element={<AdventureForm />} />
+          <Route path="/adventure/:id" element={'Detail'} />
 
-      <Route element={'404'} />
-    </Switch>
+          <Route element={'404'} />
+        </Switch>
+      </Layout>
+    </RouterProvider>
   )
 }
 
