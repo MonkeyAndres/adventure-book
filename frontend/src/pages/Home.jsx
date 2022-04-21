@@ -59,6 +59,7 @@ const Home = () => {
           <input
             type="search"
             value={searchQuery}
+            placeholder="Busca aventuras..."
             onChange={handleSearchQueryChange}
           />
 
@@ -69,11 +70,13 @@ const Home = () => {
       <hr className={styles.separator} />
 
       <Layout.Container>
-        {isLoading || isSearching || isNil(data) ? (
+        {isLoading || isSearching ? (
           'Loading adventures...'
         ) : (
           <AdventuresList
-            adventures={searchQuery ? searchResults : data}
+            adventures={
+              searchQuery && !isNil(searchResults) ? searchResults : data
+            }
             goToAdventureDetail={(adventureId) =>
               history.push(`/adventure/${adventureId}`)
             }
