@@ -16,15 +16,16 @@
   font-family: 'Roboto Slab', serif;
 }
 
-.headerContainer nav a {
+.headerContainer nav span {
   margin-right: 1.2rem;
   color: #fefefe;
   text-decoration: none;
 
   transition: color 200ms ease-in-out;
+  cursor: pointer;
 }
 
-.headerContainer nav a:hover {
+.headerContainer nav span:hover {
   color: var(--charcoal);
 }
 

@@ -1,6 +1,6 @@
 import styles from './Layout.module.css'
 
-const Layout = ({ performLogout, children }) => {
+const Layout = ({ goToAdventures, performLogout, children }) => {
   return (
     <div>
       <header className={styles.header}>
@@ -8,7 +8,7 @@ const Layout = ({ performLogout, children }) => {
           <h1>AdventureBook</h1>
 
           <nav>
-            <a href="#">My adventures</a>
+            <span onClick={goToAdventures}>My adventures</span>
             <button onClick={performLogout}>Sign out</button>
           </nav>
         </div>
