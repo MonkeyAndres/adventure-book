@@ -327,7 +327,7 @@ const adventureRoutes = () => {
 
   router.get('/adventure/:id', async (req, res) => {
     const userId = req.user.id
-    const adventureId = req.params.id
+    const adventureId = parseInt(req.params.id, 10)
 
     const adventure = await prisma.adventure.findUnique({
       select: adventureDataSelect,
@@ -341,7 +341,9 @@ const adventureRoutes = () => {
     })
 
     if (!adventure) {
-      return res.status(400).json({ message: `No adventure with id "${id}"` })
+      return res
+        .status(400)
+        .json({ message: `No adventure with id "${adventureId}"` })
     }
 
     return res.json(formatAdventureTags(adventure))
