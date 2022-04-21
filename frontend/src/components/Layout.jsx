@@ -20,7 +20,11 @@ const Layout = ({ performLogout, children }) => {
 }
 
 const Container = ({ children }) => {
-  return <div className={styles.container}>{children}</div>
+  return (
+    <div className={styles.container}>
+      <div>{children}</div>
+    </div>
+  )
 }
 
 Layout.Container = Container
