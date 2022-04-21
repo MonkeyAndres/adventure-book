@@ -16,3 +16,25 @@ export const useRecentAdventures = ({ autoRun = false } = {}) => {
     data,
   }
 }
+
+export const useAdventuresSearch = () => {
+  const { isPending, data, execute } = useQuery(
+    'searchAdventures',
+    (query) =>
+      enhancedFetch(
+        'GET',
+        `/api/adventure/search?query=${encodeURIComponent(query)}`,
+        { parseJSON: true },
+      ),
+    {
+      selector: ({ data }) => data,
+    },
+  )
+
+  return {
+    isPending,
+    data,
+
+    search: execute,
+  }
+}
