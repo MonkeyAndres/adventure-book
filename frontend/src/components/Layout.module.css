@@ -29,6 +29,21 @@
   color: var(--charcoal);
 }
 
+.headerContainer nav button {
+  background: none;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.headerContainer nav button svg {
+  fill: #fefefe;
+  transition: fill 200ms ease-in-out;
+}
+
+.headerContainer nav button svg:hover {
+  fill: var(--charcoal);
+}
+
 .container {
   padding: 1.2rem 1rem;
 }
