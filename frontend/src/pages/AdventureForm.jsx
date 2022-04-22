@@ -19,12 +19,12 @@ const labelToOption = ({ label }) => ({ label, value: label })
 
 const CUSTOM_SELECT_STYLES = {
   multiValue: () => ({
-    'background-color': 'var(--dark-sea-green)',
-    'border-radius': '2px',
+    backgroundColor: 'var(--dark-sea-green)',
+    borderRadius: '2px',
     display: 'flex',
     margin: '2px',
-    'min-width': 0,
-    'box-sizing': 'border-box',
+    minWidth: 0,
+    boxSizing: 'border-box',
   }),
 }
 
