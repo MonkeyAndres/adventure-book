@@ -79,6 +79,11 @@ const useQuery = (id, promiseCreator, userConfig = {}) => {
 
   useEffect(() => {
     if (config.autoRun) {
+      if (state.status !== ASYNC_STATUSES.IDLE) {
+        refetch()
+        return
+      }
+
       execute()
     }
 
