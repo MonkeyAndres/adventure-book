@@ -17,6 +17,17 @@ const identity = (x) => x
 
 const labelToOption = ({ label }) => ({ label, value: label })
 
+const CUSTOM_SELECT_STYLES = {
+  multiValue: () => ({
+    'background-color': 'var(--dark-sea-green)',
+    'border-radius': '2px',
+    display: 'flex',
+    margin: '2px',
+    'min-width': 0,
+    'box-sizing': 'border-box',
+  }),
+}
+
 const AdventureForm = ({ isEdit = false, adventure }) => {
   const history = useContext(RouterContext)
 
@@ -113,6 +124,7 @@ const AdventureForm = ({ isEdit = false, adventure }) => {
             <CreatableSelect
               isMulti
               backspaceRemovesValue
+              styles={CUSTOM_SELECT_STYLES}
               name="tags"
               onChange={(value) => {
                 setFieldValue('tags', value)
@@ -130,6 +142,7 @@ const AdventureForm = ({ isEdit = false, adventure }) => {
             <CreatableSelect
               isMulti
               backspaceRemovesValue
+              styles={CUSTOM_SELECT_STYLES}
               name="people"
               onChange={(value) => {
                 setFieldValue('people', value)

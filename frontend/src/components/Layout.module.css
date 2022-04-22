@@ -33,7 +33,7 @@
   padding: 1.2rem 1rem;
 }
 
-.container div {
+.container > div {
   max-width: 1200px;
   margin: 0 auto;
 }
