@@ -17,7 +17,7 @@ const Layout = ({ goToAdventures, performLogout, children }) => {
   return (
     <div>
       <header className={styles.header}>
-        <div className={styles.headerContainer}>
+        <div onClick={goToAdventures} className={styles.headerContainer}>
           <h1>AdventureBook</h1>
 
           <nav>
