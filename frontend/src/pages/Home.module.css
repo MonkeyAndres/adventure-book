@@ -20,3 +20,15 @@
 
   background-color: var(--dark-slate-gray);
 }
+
+@media screen and (max-width: 480px) {
+  .searchContainer input {
+    width: 100%;
+    margin-right: 0rem;
+    margin-bottom: 1rem;
+  }
+
+  .searchContainer button {
+    width: 100%;
+  }
+}
