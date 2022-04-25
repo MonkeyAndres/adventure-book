@@ -36,7 +36,7 @@ const Switch = ({ children }) => {
         continue
       }
 
-      return React.cloneElement(child.props.element, {
+      return React.cloneElement(element, {
         params: matchUrl.params,
       })
     }
