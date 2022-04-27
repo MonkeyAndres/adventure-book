@@ -61,7 +61,9 @@ const PrivateRoutes = () => {
         <Route path="/adventure/create" element={<AdventureForm />} />
         <Route path="/adventure/:id" element={<AdventureForm isEdit />} />
 
-        <Route element={<Layout.Container>Page not found</Layout.Container>} />
+        <Route
+          element={<Layout.Container>Pagina no encontrada</Layout.Container>}
+        />
       </Switch>
     </Layout>
   )
